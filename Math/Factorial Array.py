@@ -1,4 +1,3 @@
-
 """
 Factorial Array
 Problem Description
@@ -45,7 +44,11 @@ Input 2:
  Array B will be : [2, 6, 24]
  The total possible subsequences are 4 : [2], [6], [24], [6, 24].
 
+
+
 """
+
+
 from collections import Counter
 class Solution:
     # @param A : list of integers

@@ -1,4 +1,3 @@
-
 """
 Odd Fibonacci
 Problem Description
@@ -48,6 +47,7 @@ Explanation 1:
  From the above values only three values are odd.
 
 """
+
 class Solution:
     # @param A : integer
     # @param B : integer
@@ -60,3 +60,19 @@ class Solution:
                 index=i
                 break
         return (B-A+1)-(int((B-i)//3)+1)
+
+
+        
+
+                
+
+
+	    
+
+        
+
+
+
+        
+
+	        

@@ -1,42 +1,44 @@
 from collections import defaultdict
 
+
 def compute(a):
-    mem=defaultdict(int)
-    flag=1
-    i=0
-    sign_stack=[1]
-    while(i<len(a)):
-        if(a[i]=="("):
-            if(i==0 or a[i-1]!="-"):
+    mem = defaultdict(int)
+    flag = 1
+    i = 0
+    sign_stack = [1]
+    while (i < len(a)):
+        if (a[i] == "("):
+            if (i == 0 or a[i - 1] != "-"):
                 sign_stack.append(1)
             else:
                 sign_stack.append(-1)
-                flag*=-1
-        elif(a[i]==")"):
-            flag=flag//sign_stack.pop()
-        elif(a[i]!="+" and a[i]!="-"):
-            if(a[i-1]=="-"):
-                mem[a[i]]=flag*(-1)
+                flag *= -1
+        elif (a[i] == ")"):
+            flag = flag // sign_stack.pop()
+        elif (a[i] != "+" and a[i] != "-"):
+            if (a[i - 1] == "-"):
+                mem[a[i]] = flag * (-1)
             else:
-                mem[a[i]]=flag
-        i+=1
+                mem[a[i]] = flag
+        i += 1
     return mem
+
 
 class Solution:
     # @param A : string
     # @param B : string
     # @return an integer
     def solve(self, a, b):
-        a=compute(a)
-        b=compute(b)
+        a = compute(a)
+        b = compute(b)
         # print(a)
         # print(b)
-        if len(a.keys())!=len(b.keys()):
+        if len(a.keys()) != len(b.keys()):
             return 0
         for key in a.keys():
-            if(key not in b):
+            if (key not in b):
                 return 0
-            if(a[key]!=b[key]):
+            if (a[key] != b[key]):
                 return 0
         return 1
 

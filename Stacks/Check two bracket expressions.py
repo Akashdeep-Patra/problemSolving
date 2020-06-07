@@ -3,7 +3,6 @@ from collections import defaultdict
 def compute(a):
     mem=defaultdict(int)
     flag=1
-
     i=0
     sign_stack=[1]
     while(i<len(a)):

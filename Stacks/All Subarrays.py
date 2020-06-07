@@ -1,3 +1,35 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, a):
+        ans = [0] * len(a)
+        stack = []
+        output = float("-inf")
+        for i in range(len(a)):
+            while (len(stack) != 0 and stack[-1] <= a[i]):
+                stack.pop()
+            if (len(stack) == 0):
+                ans[i] = a[i]
+            else:
+                ans[i] = stack[-1]
+            stack.append(a[i])
+        for i in range(len(a)):
+            output = max(output, ans[i] ^ a[i])
+        ans = [0] * len(a)
+        stack = []
+        for i in range(len(a) - 1, -1, -1):
+            while (len(stack) != 0 and stack[-1] <= a[i]):
+                stack.pop()
+            if (len(stack) == 0):
+                ans[i] = a[i]
+            else:
+                ans[i] = stack[-1]
+            stack.append(a[i])
+        for i in range(len(a)):
+            output = max(output, ans[i] ^ a[i])
+        return output
+
+
 """
 Problem Description
 
@@ -60,35 +92,3 @@ Explanation 2:
 
  Only subarray is [1, 3] and XOR of maximum and 2nd maximum is 2.
 """
-
-class Solution:
-    # @param A : list of integers
-    # @return an integer
-    def solve(self, a):
-        ans=[0]*len(a)
-        stack=[]
-        output=float("-inf")
-        for i in range(len(a)):
-            while(len(stack)!=0 and stack[-1]<=a[i]):
-                stack.pop()
-            if(len(stack)==0):
-                ans[i]=a[i]
-            else:
-                ans[i]=stack[-1]
-            stack.append(a[i])
-        for i in range(len(a)):
-            output=max(output,ans[i]^a[i])
-        ans=[0]*len(a)
-        stack=[]
-        for i in range(len(a)-1,-1,-1):
-            while(len(stack)!=0 and stack[-1]<=a[i]):
-                stack.pop()
-            if(len(stack)==0):
-                ans[i]=a[i]
-            else:
-                ans[i]=stack[-1]
-            stack.append(a[i])
-        for i in range(len(a)):
-            output=max(output,ans[i]^a[i])
-        return output
-        
